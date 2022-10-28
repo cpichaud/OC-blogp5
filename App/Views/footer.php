@@ -1,8 +1,8 @@
 
-    <footer style='bottom:0; width:100%; padding-top:50px;' class="blog-footer, container">
-    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <footer>
+    <p>© Camille PICHAUD</p>
     <p>
-        <a href="#">Back to top</a>
+        <a href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=home">Retour à l'accueil</a>
     </p>
     </footer> 
   </body>

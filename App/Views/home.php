@@ -5,3 +5,5 @@
 <?= $content; ?>
 
 </main>
+
+<?php require "footer.php"?>

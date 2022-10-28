@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <!-- Css -->
     <link rel="stylesheet" href="../public/css/register.css">
-    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/style.css">
   </head>
   <body>      
     <div class="container header">
