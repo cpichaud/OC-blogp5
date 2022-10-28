@@ -1,5 +1,11 @@
 <!--HEADER-->
-<?php require "header.php"?>
+<?php require "header.php";
+if (!empty($_POST)) {
+  if (isset($_POST["prenom"])) {
+    
+  }
+}
+?>
 <main class="register-image">
   <section class="vh-100 bg-image"
     style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
@@ -50,7 +56,6 @@
 
                   <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte ? <a href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=connecion"
                       class="fw-bold text-body"><u>Se connecter</u></a></p>
-
                 </form>
               </div>
             </div>

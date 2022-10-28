@@ -2,16 +2,17 @@
 
 namespace App\config;
 
-
+use PDO;
 abstract class connectionDb
 {
-    public ?\PDO $database = null;
+    protected $db;
 
-    public function getConnection(): \PDO
+    
+    public function __construct()
     {
-        if ($this->database === null) {
-            $this->database = new \PDO('mysql:host=localhost;dbname=blogdb_p5;charset=utf8', 'root', 'root');
-        }
-        return $this->database;
+        $this->db = new PDO(
+            'mysql:host=localhost;dbname=blogdb_p5;charset=utf8', 'root', 'root', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+        );
+        
     }
 }
