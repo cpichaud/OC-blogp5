@@ -2,7 +2,8 @@
 
 namespace App\config;
 
-class connectionDb
+use PDO;
+abstract class connectionDb
 {
     public ?\PDO $database = null;
 

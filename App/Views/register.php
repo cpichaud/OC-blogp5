@@ -56,7 +56,7 @@
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Inscription</h2>
 
-                <form>
+                <form method="POST">
 
                   <div class="form-outline mb-4">
                     <input type="text" id="pseudo" class="form-control form-control-lg" />
