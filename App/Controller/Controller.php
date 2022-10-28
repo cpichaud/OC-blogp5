@@ -17,5 +17,4 @@ abstract class Controller  {
         }       
         Require_once ROOT.'/App/Views/'.$template.'.php';
     }
-
 }
