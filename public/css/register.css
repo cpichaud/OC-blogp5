@@ -1,0 +1,11 @@
+.register-image{
+    background-image: url("../images/home/home.jpg");
+    background-position: bottom;
+    background-size: cover
+}
+
+.register-form{
+    filter: drop-shadow(0px 0px 0.75rem black);
+}
+
+
