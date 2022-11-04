@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Model\Manager;
 
-class User extends Manager
+
+class User
 {
     private $id;
     private $lastname;
@@ -47,7 +47,7 @@ class User extends Manager
         $this->email = $email;
     }
 
-    public function getPhone():string
+    public function getPhone()
     {
         return $this->phone;
     }
@@ -78,5 +78,7 @@ class User extends Manager
     {
         
     }
+
+    
     
 }
