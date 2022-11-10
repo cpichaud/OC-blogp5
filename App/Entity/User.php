@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Model\Manager;
 
-class User extends Manager
+
+class User
 {
     private $id;
     private $lastname;
@@ -13,6 +13,7 @@ class User extends Manager
     private $phone;
     private $password;
     private $role;
+    private $post_id;
 
 
     public function getId():int
@@ -47,7 +48,7 @@ class User extends Manager
         $this->email = $email;
     }
 
-    public function getPhone():string
+    public function getPhone():int
     {
         return $this->phone;
     }
@@ -65,7 +66,7 @@ class User extends Manager
         $this->password = $password;
     }
 
-    public function getRole():string
+    public function getRole():int
     {
         return $this->role;
     }
@@ -74,9 +75,20 @@ class User extends Manager
         $this->role = $role;
     }
 
+    public function getPost_id():int
+    {
+        return $this->post_id;
+    }
+    public function setPost_id($post_id)
+    {
+        $this->post_id = $post_id;
+    }
+
     public function __toString()
     {
         
     }
+
+    
     
 }
