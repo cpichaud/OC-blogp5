@@ -17,19 +17,18 @@ class Manager extends connectionDb
     // }
 
     //first test with user
+    /**
+     * @return array
+     */
     public function findAll()
     {
-        $users = null;
+        $users = [];
         $sql = "SELECT * FROM `user`" ;
-        $test = $this->db->query($sql);
-         while ($user = $test->fetch()) {
-            // var_dump($user);
-            // var_dump('new user:', new User());
-            // die();
-            $users = new User($user);
-
+        $r = $this->db->query($sql);
+         while ($user = $r->fetch()) {
+            $users[] = new User($user);
+            $users[] = $user;
         }
-    
         return $users;
     }
 

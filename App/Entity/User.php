@@ -13,6 +13,7 @@ class User
     private $phone;
     private $password;
     private $role;
+    private $post_id;
 
 
     public function getId():int
@@ -47,7 +48,7 @@ class User
         $this->email = $email;
     }
 
-    public function getPhone()
+    public function getPhone():int
     {
         return $this->phone;
     }
@@ -65,13 +66,22 @@ class User
         $this->password = $password;
     }
 
-    public function getRole():string
+    public function getRole():int
     {
         return $this->role;
     }
     public function setrole($role)
     {
         $this->role = $role;
+    }
+
+    public function getPost_id():int
+    {
+        return $this->post_id;
+    }
+    public function setPost_id($post_id)
+    {
+        $this->post_id = $post_id;
     }
 
     public function __toString()
