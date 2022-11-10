@@ -8,13 +8,32 @@ use App\Entity\User;
 
 class Manager extends connectionDb
 {
-    // public function create(string $lastname, string $firstname, string $email, int $phone, string $password, $role)
-    // {
-    //     $sql = "INSERT INTO user(firstname, lastname, email, phone, password, role)  VALUES ()" ;
+    /**
+     * @param string $lastname
+     * @param string $firstname
+     * @param string $email
+     * @param integer $phone
+     * @param string $password
+     * @param [type] $role
+     * @return int
+     */
+    public function createUser(string $lastname, string $firstname, string $email, int $phone, string $password, $role)
+    {
+        $sql = "INSERT INTO user(firstname, lastname, email, phone, password, role)  
+        VALUES (:firstname, :lastname, :email, :phone, :password, :role)" ;
+        $r = $this->db->prepare($sql);
+        $r->execute([
+            ':firstname' => $firstname,
+            ':lastname'  => $lastname,
+            ':email'     => $email,
+            ':phone'     => $phone,
+            ':password'  => $password,
+            ':role'      => $role
+        ]);
 
-       
-        
-    // }
+        $new = $this->db->lastInsertId();
+        return $new;  
+    }
 
     //first test with user
     /**
