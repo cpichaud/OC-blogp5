@@ -1,0 +1,19 @@
+.top-home{
+    background-image: url("../images/home/pexels-eduardo-dutra-2115217.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 450px;
+}
+
+.name-home{
+    padding-top: 8rem;
+    margin-right: 350px;
+    margin-left: 350px;
+
+}
+/* .logo{
+
+    background-image: url("../images/home/logo.jpg");
+    background-position: bottom;
+    background-size: cover
+} */
