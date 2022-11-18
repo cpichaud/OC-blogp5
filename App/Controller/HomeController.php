@@ -3,19 +3,19 @@
 namespace App\Controller;
 
 use App\Controller\Controller as Controller;
-use App\Model\Manager;
+use App\Model\UserManager;
 
 
 class HomeController extends Controller{
 
     /**
-     * @var Manager
+     * @var UserManager
      */
-    private $manager;
+    private $userManager;
 
     public function __construct()
     {
-        $this->manager = new Manager();
+        $this->userManager = new UserManager();
     }
 
 
@@ -24,11 +24,10 @@ class HomeController extends Controller{
     
 
      
-        $userTest = $this->manager->findAll();
+        $userTest = $this->userManager->findAll();
 
         foreach($userTest as $user){
-            //$test = $user->getLastname();
-            var_dump($user);
+            //var_dump($user);
         }
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 

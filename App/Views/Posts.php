@@ -3,7 +3,13 @@
 
 <main class="container">
 
-<?= $content; ?>
+    <?php if (!empty($post['content'])) {
+
+        echo $post['content'];
+    
+    }else{
+        echo "Vous n'avez aucun post";
+    } ?>
 
 </main>
 

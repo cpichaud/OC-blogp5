@@ -6,7 +6,7 @@ use PDO;
 use App\config\connectionDb;
 use App\Entity\User;
 
-class Manager extends connectionDb
+class UserManager extends connectionDb
 {
 
 
