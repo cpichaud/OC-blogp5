@@ -8,6 +8,9 @@ use App\Entity\User;
 
 class Manager extends connectionDb
 {
+
+ 
+
     /**
      * @param string $lastname
      * @param string $firstname
@@ -35,30 +38,46 @@ class Manager extends connectionDb
         return $new;  
     }
 
-    //first test with user
     /**
      * @return array
      */
-    public function findAll()
+    public function findAll():array
     {
         $users = [];
         $sql = "SELECT * FROM `user`" ;
         $r = $this->db->query($sql);
          while ($user = $r->fetch()) {
             $users[] = new User($user);
-            $users[] = $user;
         }
         return $users;
     }
 
-    // public function findById(int $id)
-    // {
-    //     $sql = "SELECT * FROM user WHERE id = ?" ;
-    //     $userId = $this->db->prepare($sql);
-    //     $userId->bindValue(1, $id, PDO::PARAM_INT);
-    //     $userId->execute();
+    public function findById(int $id)
+    {
+        $sql = "SELECT * FROM user WHERE id = ?" ;
+        $userId = $this->db->prepare($sql);
+        $userId->bindValue(1, $id, PDO::PARAM_INT);
+        $userId->execute();
 
-    //     return new User($userId->fetch());
+        return new User($userId->fetch());
 
-    // }
+    }
+
+    public function findByEmail(string $email)
+    {
+        $sql = "SELECT * FROM user WHERE email = ?" ;
+        $userEmail = $this->db->prepare($sql);
+        $userEmail->bindValue(1, $email, PDO::PARAM_STR);
+        $userEmail->execute();
+        $r = $userEmail->fetch();
+        return new User($r);
+    }
+
+    public function Delete(int $id)
+    {
+        $sql = "DELETE FROM user WHERE id = ?" ;
+        $delete = $this->db->prepare($sql);
+        $delete->execute([$id]);
+    }
+    
 }
