@@ -27,11 +27,12 @@ class HomeController extends Controller{
         $userTest = $this->manager->findAll();
 
         foreach($userTest as $user){
-
+            //$test = $user->getLastname();
+            var_dump($user);
         }
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
-            'content' => $content ,
+            'content' => $content,
             'Accueil' => [],
             'user' => $user,
         ];
