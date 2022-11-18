@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
+use ArrayObject;
 
-
-class User
+class User extends ArrayObject
 {
+    /**
+     * @var int
+     */  
     private $id;
     private $lastname;
     private $firstname;
@@ -15,6 +18,10 @@ class User
     private $role;
     private $post_id;
 
+
+    function __construct()
+    {
+    }
 
     public function getId():int
     {

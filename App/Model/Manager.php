@@ -9,6 +9,7 @@ use App\Entity\User;
 class Manager extends connectionDb
 {
 
+
  
 
     /**
@@ -47,7 +48,9 @@ class Manager extends connectionDb
         $sql = "SELECT * FROM `user`" ;
         $r = $this->db->query($sql);
          while ($user = $r->fetch()) {
-            $users[] = new User($user);
+            new User($user);
+            $users[] = $user;
+            
         }
         return $users;
     }

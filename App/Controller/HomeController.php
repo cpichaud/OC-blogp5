@@ -32,7 +32,7 @@ class HomeController extends Controller{
         }
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
-            'content' => $content ,
+            'content' => $content,
             'Accueil' => [],
             'user' => $user,
         ];
