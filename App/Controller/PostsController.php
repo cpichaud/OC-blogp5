@@ -24,15 +24,16 @@ class PostsController extends Controller{
      
         $postTest = $this->postManager->findAll();
 
-        foreach($postTest as $post){
-            var_dump($post);
-        }
+        // foreach($postTest as $post){
+        //     $title = $post->getTitle();
+        //     var_dump($title);
+        // }
         $content = "ceci est le contenu de mon post.";
 
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
-            'post' => $post,
+            'postTest' => $postTest,
         ];
         
         $this->render($arrayToTemplate, __CLASS__);

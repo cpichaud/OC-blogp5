@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../public/css/home.css">
     <link rel="stylesheet" href="../public/css/register.css">
     <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/post.css">
   </head>
   <body>      
     <div class="container header">
