@@ -19,6 +19,12 @@ if(isset($_GET['page'])){
 
 if(isset($_GET['action'])){
     $action = $_GET['action'];
+    if(isset($action) === 'showById'){
+        if(isset($_GET['id']) && $_GET['id'] > 0){
+            $id = $_GET['id'];
+            var_dump($id);
+        }
+    }
 }
 
 $nameController = 'App\Controller\\'.ucfirst($page).'Controller';

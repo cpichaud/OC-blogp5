@@ -37,7 +37,7 @@
                             <a class="nav-link" href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=posts">Posts</a>
                         </li>                            
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Connection</a>
+                            <a class="nav-link" href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=login">Connection</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=register">Inscription</a>

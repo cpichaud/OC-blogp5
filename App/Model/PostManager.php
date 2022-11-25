@@ -8,10 +8,6 @@ use App\Entity\post;
 
 class PostManager extends connectionDb
 {
-
-
- 
-
     /**
      * @param string $title
      * @param string $content
@@ -54,14 +50,15 @@ class PostManager extends connectionDb
         return $posts;
     }
 
+
     public function findById(int $id)
     {
         $sql = "SELECT * FROM post WHERE id = ?" ;
         $postId = $this->db->prepare($sql);
-        $postId->bindValue(1, $id, PDO::PARAM_INT);
-        $postId->execute();
-
-        return new post($postId->fetch());
+        //$postId->bindValue(1, $id, PDO::PARAM_INT);
+        $postId->execute([$id]);
+        $r = $postId->fetch();
+        return $r;
 
     }
 

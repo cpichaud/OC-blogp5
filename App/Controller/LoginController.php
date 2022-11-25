@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Model\PostManager;
 use App\Controller\Controller as Controller ;
 
-class PostsController extends Controller{
+class LoginController extends Controller{
 
 
      /**
@@ -18,33 +18,13 @@ class PostsController extends Controller{
         $this->postManager = new PostManager();
     }
 
-
     public function show(){
- 
-        $posts = $this->postManager->findAll();
         $content = "ceci est le contenu de mon post.";
 
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
-            'posts' => $posts,
         ];  
         $this->render($arrayToTemplate, __CLASS__); 
     }
-
-    public function showById(){
-
-        $postManager = new PostManager();  
-        $post = $postManager->findById($_GET['id']);
-        $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
-            'Accueil' => [],
-            'post' => $post
-        ];
-        
-        $this->render($arrayToTemplate, "post");
-        
-    }
-
-
 }
