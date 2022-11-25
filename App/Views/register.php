@@ -53,7 +53,7 @@ if (!empty($_POST)) {
                       class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">S'enregistrer</button>
                   </div>
 
-                  <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte ? <a href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=connecion"
+                  <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte ? <a href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=login"
                       class="fw-bold text-body"><u>Se connecter</u></a></p>
                 </form>
               </div>

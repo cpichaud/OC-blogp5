@@ -7,16 +7,6 @@ use App\Controller\Controller as Controller ;
 
 class RegisterController extends Controller{
 
-    /**
-     * @var Manager
-     */
-    private $manager;
-
-    public function __construct()
-    {
-        $this->manager = new Manager();
-    }
-
 
     /**
      * @return Response
