@@ -13,10 +13,6 @@ class RegisterController extends Controller{
      */
     public function show(){
 
-
-        //if log redirect -> home
-
-
         $content = "Inscription";
 
         $arrayToTemplate = ['title' => 'Inscription', 'content' => $content ,'posts' =>[]];
@@ -24,5 +20,17 @@ class RegisterController extends Controller{
         $this->render($arrayToTemplate, 'register');
     }
 
+//     public function register(){
+        
+// if (isset($_POST['register'])) {
+//         echo "ok";
+//         die();
+// }
+//         $content = "Inscription";
+
+//         $arrayToTemplate = ['title' => 'Inscription', 'content' => $content ,'posts' =>[]];
+
+//         $this->render($arrayToTemplate, 'register');
+//     }
 
 }

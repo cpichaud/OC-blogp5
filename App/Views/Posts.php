@@ -2,7 +2,6 @@
 <?php 
 require_once "Auth.php";
 userLogin();
-
 require_once "header.php"?>
 
 <main class="container">

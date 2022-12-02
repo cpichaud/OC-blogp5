@@ -1,10 +1,42 @@
 <!--HEADER-->
-<?php require "header.php";
-if (!empty($_POST)) {
-  if (isset($_POST["prenom"])) {
+<?php 
+require_once "Auth.php";
+require_once "header.php"
+?>
+<?php
+use App\Model\UserManager;
+
+if (isset($_POST['register'])) {
+
+  if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['nom']) && !empty($_POST['telephone'])
+  && !empty($_POST['prenom']) && !empty($_POST['repeat_pass'])) {
+     $email = htmlspecialchars($_POST['email']);
+     $password = htmlspecialchars($_POST['password']);
+     $telephone = htmlspecialchars($_POST['telephone']);
+     $nom = htmlspecialchars($_POST['nom']);
+     $prenom = htmlspecialchars($_POST['prenom']);
+     $repeat_pass = htmlspecialchars($_POST['repeat_pass']);
     
+    $role =0;
+    $userManager = new UserManager();
+    $user = $userManager->createUser(
+      $_POST['prenom'], 
+      $_POST['nom'], 
+      $_POST['email'], 
+      $_POST['telephone'], 
+      $_POST['password'],
+      $role); 
+      header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=login');   
+  }else {
+      echo "Veuillez remplir tous les champs";
   }
 }
+
+require_once 'Auth.php';
+if (isLogin()) {
+  header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home');
+}
+        
 ?>
 <main class="register-image">
   <section class="vh-100 bg-image">
@@ -19,38 +51,39 @@ if (!empty($_POST)) {
                 <form method="POST">
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="nom" class="form-control form-control-lg" />
+                    <input type="text" id="nom" name="nom"class="form-control form-control-lg" />
                     <label class="form-label" for="nom">Nom</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="prenom" class="form-control form-control-lg" />
+                    <input type="text" id="prenom" name="prenom" class="form-control form-control-lg" />
                     <label class="form-label" for="prenom">Prénom</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="email" class="form-control form-control-lg" />
+                    <input type="email" id="email" name="email" class="form-control form-control-lg" />
                     <label class="form-label" for="email">Email</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="telephone" class="form-control form-control-lg" />
+                    <input type="integer" id="telephone" name="telephone" class="form-control form-control-lg" />
                     <label class="form-label" for="telephone">Téléphone</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="password" class="form-control form-control-lg" />
+                    <input type="password" id="password" name="password" class="form-control form-control-lg" />
                     <label class="form-label" for="password">Password</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="repeat-pass" class="form-control form-control-lg" />
-                    <label class="form-label" for="repeat-pass">Repeat your password</label>
+                    <input type="password" id="repeat_pass" name="repeat_pass" class="form-control form-control-lg" />
+                    <label class="form-label" for="repeat_pass">Repeat your password</label>
                   </div>
 
                   <div class="d-flex justify-content-center">
-                    <button type="button"
-                      class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">S'enregistrer</button>
+                    <button type="submit" name="register" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">
+                      S'enregistrer
+                    </button>
                   </div>
 
                   <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte ? <a href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=login"
