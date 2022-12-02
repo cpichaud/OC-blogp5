@@ -73,7 +73,7 @@ class UserManager extends connectionDb
         $userEmail->bindValue(1, $email, PDO::PARAM_STR);
         $userEmail->execute();
         $r = $userEmail->fetch();
-        return new User($r);
+        return $r;
     }
 
     public function Delete(int $id)

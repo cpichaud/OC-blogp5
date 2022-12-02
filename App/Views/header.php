@@ -34,13 +34,19 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li class="nav-item active">
-                            <a class="nav-link" href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=posts">Posts</a>
-                        </li>                            
+                            <a class="nav-link" href="/blog-oc-p5/OC-blogp5/public/index.php?page=posts">Posts</a>
+                        </li> 
+                        <?php if(isLogin()){?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog-oc-p5/OC-blogp5/public/index.php?page=login&action=logout">Se déconnecter</a>
+                            </li> 
+                        <?php }else{?>                          
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=login">Connection</a>
+                            <a class="nav-link" href="/blog-oc-p5/OC-blogp5/public/index.php?page=login">Connexion</a>
                         </li>
+                        <?php }?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost/blog-oc-p5/OC-blogp5/public/index.php?page=register">Inscription</a>
+                            <a class="nav-link" href="/blog-oc-p5/OC-blogp5/public/index.php?page=register">Inscription</a>
                         </li>
                     </ul>
                 </div>

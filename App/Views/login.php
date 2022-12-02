@@ -1,11 +1,35 @@
 <!--HEADER-->
-<?php require "header.php";
-if (!empty($_POST)) {
-  if (isset($_POST["prenom"])) {
+
+<?php
+use App\Model\UserManager;
+
+if (isset($_POST['submit'])) {
+
+  if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    $email = htmlspecialchars($_POST['email']);
+    $password = $_POST['password'];  
     
+    $userManager = new UserManager();
+    $user = $userManager->findByEmail($_POST['email']); 
+    if($user['email'] !== null && $user['email'] == $email && $user['password'] == $password){
+          session_start();
+          $_SESSION['connecte'] = 1;
+          header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home'); 
+      }else{       
+          echo "Email ou mot de passe introuvable";
+      }            
+  }else {
+      echo "Une erreur c'est produite";
   }
 }
+
+require_once 'Auth.php';
+if (isLogin()) {
+  header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home');
+}
+        
 ?>
+<?php require "header.php";?>
 <main class="register-image">
   <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -17,21 +41,21 @@ if (!empty($_POST)) {
                 <h2 class="text-uppercase text-center mb-5">Connexion</h2>
 
                 <form method="POST">
-
                   <div class="form-outline mb-4">
-                    <input type="email" id="email" class="form-control form-control-lg" />
+                    <input type="email" id="email" class="form-control form-control-lg" name="email"/>
                     <label class="form-label" for="email">Email</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="password" class="form-control form-control-lg" />
+                    <input type="password" id="password" class="form-control form-control-lg" name="password" />
                     <label class="form-label" for="password">Password</label>
                   </div>
 
-                  <div class='container-cv'>
-                    <button type='button' class='button'>
-                        <span><a href=''>Se connecter</a></span>
+                  <div class="container-cv">
+                    <button name="submit" class="button">
+                        <span>Se connecter</span>
                     </button>
+          
                   </div>
                 </form>
               </div>
