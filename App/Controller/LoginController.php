@@ -2,29 +2,37 @@
 
 namespace App\Controller;
 
-use App\Model\PostManager;
+use App\Model\UserManager;
 use App\Controller\Controller as Controller ;
 
 class LoginController extends Controller{
 
 
      /**
-     * @var PostManager
+     * @var UserManager
      */
-    private $postManager;
+    private $userManager;
 
     public function __construct()
     {
-        $this->postManager = new PostManager();
+        $this->userManager = new UserManager();
     }
 
     public function show(){
-        $content = "ceci est le contenu de mon post.";
-
+       
         $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
+            'title'   => 'Camille PICHAUD', 
             'Accueil' => [],
         ];  
         $this->render($arrayToTemplate, __CLASS__); 
+    }
+    
+    public function logout(){
+       
+        $arrayToTemplate = [
+            'title'   => 'Camille PICHAUD', 
+            'Accueil' => [],
+        ];  
+        $this->render($arrayToTemplate, 'logout'); 
     }
 }

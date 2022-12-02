@@ -42,8 +42,7 @@ class PostsController extends Controller{
             'post' => $post
         ];
         
-        $this->render($arrayToTemplate, "post");
-        
+        $this->render($arrayToTemplate, "post");  
     }
 
 

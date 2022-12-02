@@ -1,4 +1,8 @@
 <!--HEADER-->
+
+<?php require "Auth.php"?>
+ 
+
 <?php require "header.php"?>
 <section class="top-home">
     <div class="container">
