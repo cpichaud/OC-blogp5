@@ -19,7 +19,6 @@ try {
          && !empty($_POST['prenom']) ) 
     {
       $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
-      $pass_verif = password_verify($_POST['password'], $pass_verif);
 
       // var_dump(htmlspecialchars($_POST['password']));
       // die();

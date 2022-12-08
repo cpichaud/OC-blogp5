@@ -62,16 +62,6 @@ class PostManager extends connectionDb
 
     }
 
-    // public function findByEmail(string $email)
-    // {
-    //     $sql = "SELECT * FROM post WHERE email = ?" ;
-    //     $postEmail = $this->db->prepare($sql);
-    //     $postEmail->bindValue(1, $email, PDO::PARAM_STR);
-    //     $postEmail->execute();
-    //     $r = $postEmail->fetch();
-    //     return new post($r);
-    // }
-
     public function Delete(int $id)
     {
         $sql = "DELETE FROM post WHERE id = ?" ;
