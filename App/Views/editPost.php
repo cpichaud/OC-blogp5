@@ -32,7 +32,7 @@ require_once "header.php"?>
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" name="createPost" class="btn btn-primary btn-block mb-4">Créer votre post</button>
+                <button type="submit" name="createPost" class="btn btn-primary btn-block mb-4">Valider modification</button>
             </form>
         </div>
     </section>

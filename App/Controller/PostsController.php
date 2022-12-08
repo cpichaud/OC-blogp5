@@ -35,15 +35,12 @@ class PostsController extends Controller{
     }
 
     public function showById(){
-        $userManager = new UserManager();
-        $user = $userManager->findById(15);
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'post' => $post,
-            'user' => $user
         ];
         
         $this->render($arrayToTemplate, "post");  
@@ -93,6 +90,8 @@ class PostsController extends Controller{
 
     public function editPost(){     
         try {
+            $postManager = new PostManager();  
+            $post = $postManager->findById($_GET['id']);
             if (isset($_POST['createPost'])) {      
                 if (
                     !empty($_POST['title']) 
@@ -103,18 +102,16 @@ class PostsController extends Controller{
                     session_start();
                     $title = htmlspecialchars($_POST['title']);
                     $content = htmlspecialchars($_POST['content']);
-                    $createDate = new DateTime();
                     $updateCreate =new DateTime();        
                     $user_id = intval($_SESSION['id']);
-                    $comment_id = NULL;
+                    $id = intval($post['id']);
                   
-                    $post = $postManager->createPost(
+                    $post = $postManager->editPost(
+                        $id,
                         $title, 
-                        $content, 
-                        $createDate->format('Y-m-d H:i:s'), 
+                        $content,  
                         $updateCreate->format('Y-m-d H:i:s'), 
                         $user_id,
-                        $comment_id
                     ); 
                     
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      

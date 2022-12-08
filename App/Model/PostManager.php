@@ -37,36 +37,34 @@ class PostManager extends connectionDb
     }
 
     /**
+     * @param int $id
      * @param string $title
      * @param string $content
-     * @param $created_at
      * @param $update_at
-     * @param $comment_id
      * @param int $user_id
      * @return int
      */
-    public function editPost(string $title, string $content, $created_at, $update_at, int $user_id, $comment_id)
+    public function editPost(int $id, string $title, string $content, $update_at, int $user_id)
     {
         $sql = "UPDATE post SET 
-                content = :content, 
-                title = :title, 
-                created_at = :created_at, 
-                update_at = :update_at, 
-                user_id = :user_id, 
-                comment_id = :comment_id";
+                        content = :content, 
+                        title = :title,  
+                        update_at = :update_at, 
+                        user_id = :user_id 
+                WHERE id = :id";
 
         $r = $this->db->prepare($sql);
         $date = new DateTime();
+        
+        $r->bindValue(':id', $id, PDO::PARAM_INT);
         $r->bindValue(':content', $content);
         $r->bindValue(':title', $title);
-        $r->bindValue(':created_at', $created_at);
-        $r->bindValue(':update_at', $date->format('Y-m-d H:i:s'));
-        $r->bindValue(':comment_id', $comment_id);
+        $r->bindValue(':update_at', $update_at);
         $r->bindValue(':user_id', $user_id);
 
         $r->execute();
     }
-    
+
     /**
      * @return array
      */
