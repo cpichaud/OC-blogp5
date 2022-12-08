@@ -5,6 +5,7 @@ namespace App\Model;
 use PDO;
 use App\config\connectionDb;
 use App\Entity\post;
+use DateTime;
 
 class PostManager extends connectionDb
 {
@@ -33,6 +34,35 @@ class PostManager extends connectionDb
 
         $new = $this->db->lastInsertId();
         return $new;  
+    }
+
+    /**
+     * @param int $id
+     * @param string $title
+     * @param string $content
+     * @param $update_at
+     * @param int $user_id
+     * @return int
+     */
+    public function editPost(int $id, string $title, string $content, $update_at, int $user_id)
+    {
+        $sql = "UPDATE post SET 
+                        content = :content, 
+                        title = :title,  
+                        update_at = :update_at, 
+                        user_id = :user_id 
+                WHERE id = :id";
+
+        $r = $this->db->prepare($sql);
+        $date = new DateTime();
+        
+        $r->bindValue(':id', $id, PDO::PARAM_INT);
+        $r->bindValue(':content', $content);
+        $r->bindValue(':title', $title);
+        $r->bindValue(':update_at', $update_at);
+        $r->bindValue(':user_id', $user_id);
+
+        $r->execute();
     }
 
     /**

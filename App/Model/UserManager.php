@@ -8,10 +8,6 @@ use App\Entity\User;
 
 class UserManager extends connectionDb
 {
-
-
- 
-
     /**
      * @param string $lastname
      * @param string $firstname

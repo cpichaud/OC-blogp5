@@ -35,15 +35,12 @@ class PostsController extends Controller{
     }
 
     public function showById(){
-        $userManager = new UserManager();
-        $user = $userManager->findById(15);
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'post' => $post,
-            'user' => $user
         ];
         
         $this->render($arrayToTemplate, "post");  
@@ -89,6 +86,48 @@ class PostsController extends Controller{
             'Accueil' => [],
         ];
         $this->render($arrayToTemplate, "createPost");
+    }
+
+    public function editPost(){     
+        try {
+            $postManager = new PostManager();  
+            $post = $postManager->findById($_GET['id']);
+            if (isset($_POST['createPost'])) {      
+                if (
+                    !empty($_POST['title']) 
+                    && !empty($_POST['content'])) 
+                {
+                    $postManager = new PostManager(); 
+
+                    session_start();
+                    $title = htmlspecialchars($_POST['title']);
+                    $content = htmlspecialchars($_POST['content']);
+                    $updateCreate =new DateTime();        
+                    $user_id = intval($_SESSION['id']);
+                    $id = intval($post['id']);
+                  
+                    $post = $postManager->editPost(
+                        $id,
+                        $title, 
+                        $content,  
+                        $updateCreate->format('Y-m-d H:i:s'), 
+                        $user_id,
+                    ); 
+                    
+                    header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      
+                }else {
+                    echo "Veuillez remplir tous les champs";
+                }
+            }      
+        } catch (\Exception $e) {
+            echo "Une erreur est survenue";
+        }
+  
+        $arrayToTemplate = [
+            'title' => 'Camille PICHAUD', 
+            'Accueil' => [],
+        ];
+        $this->render($arrayToTemplate, "editPost");
     }
 
     public function deletePost(){

@@ -24,6 +24,11 @@ require_once "header.php"?>
                 <?php  echo "<span><a href='index.php?page=posts&action=deletePost&amp;id=".$post['id']."'>Supprimer ce post</a></span>";?>
             </button>
         </div>  
+        <div class="container-cv">
+            <button name="submit" class="button">            
+                <?php  echo "<span><a href='index.php?page=posts&action=editPost&amp;id=".$post['id']."'>Modifier votre post</a></span>";?>
+            </button>
+        </div> 
     <?php } ?>
        
 
