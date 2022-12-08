@@ -35,12 +35,15 @@ class PostsController extends Controller{
     }
 
     public function showById(){
+        $userManager = new UserManager();
+        $user = $userManager->findById(15);
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
-            'post' => $post
+            'post' => $post,
+            'user' => $user
         ];
         
         $this->render($arrayToTemplate, "post");  
@@ -85,6 +88,12 @@ class PostsController extends Controller{
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
         ];
-        $this->render($arrayToTemplate, "createPost");  
+        $this->render($arrayToTemplate, "createPost");
+    }
+
+    public function deletePost(){
+        $postManager = new PostManager();  
+        $post = $postManager->delete($_GET['id']);
+        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
     }
 }

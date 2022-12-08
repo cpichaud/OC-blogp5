@@ -59,10 +59,10 @@ class UserManager extends connectionDb
     {
         $sql = "SELECT * FROM user WHERE id = ?" ;
         $userId = $this->db->prepare($sql);
-        $userId->bindValue(1, $id, PDO::PARAM_INT);
-        $userId->execute();
-
-        return new User($userId->fetch());
+       // $userId->bindValue(1, $id, PDO::PARAM_INT);
+        $userId->execute([$id]);
+        $r = $userId->fetch();
+        return $r;
 
     }
 
