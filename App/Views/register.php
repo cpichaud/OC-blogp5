@@ -6,9 +6,7 @@ require_once "header.php"
 <?php
 use App\Model\UserManager;
 
-
 try {
-
   if (isset($_POST['register'])) {
 
     if (
@@ -44,8 +42,8 @@ try {
         echo "Veuillez remplir tous les champs";
     }
   }      
-} catch (\Throwable $th) {
-  
+} catch (\Exception $e) {
+  echo "Error";
 }
 
 
