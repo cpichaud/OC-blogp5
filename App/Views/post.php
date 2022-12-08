@@ -4,7 +4,6 @@ require_once "Auth.php";
 userLogin();
 require_once "header.php"?>
 
-
 <main class="container">
     <section class="container">
 
@@ -15,11 +14,11 @@ require_once "header.php"?>
              <p>".$post['content']."</p>
              <p>".$post['created_at']."</p>
          <div>";
-
     }else{
         echo "Une erreur c'est produite";
     }
-    if($_SESSION['role'] == 1 && !empty($_SESSION['role'])){    ?>
+    if($_SESSION['role'] == 1 && !empty($_SESSION['role']) || $_SESSION['id'] == $post['user_id'] && !empty($_SESSION['id']) ){ ?>
+
         <div class="container-cv">
             <button name="submit" class="button deleted">            
                 <?php  echo "<span><a href='index.php?page=posts&action=deletePost&amp;id=".$post['id']."'>Supprimer ce post</a></span>";?>
@@ -27,6 +26,8 @@ require_once "header.php"?>
         </div>  
 
     <?php } ?>
+       
+
     </section>
 </main>
 
