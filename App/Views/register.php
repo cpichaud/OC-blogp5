@@ -6,31 +6,49 @@ require_once "header.php"
 <?php
 use App\Model\UserManager;
 
-if (isset($_POST['register'])) {
 
-  if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['nom']) && !empty($_POST['telephone'])
-  && !empty($_POST['prenom']) && !empty($_POST['repeat_pass'])) {
-     $email = htmlspecialchars($_POST['email']);
-     $password = htmlspecialchars($_POST['password']);
-     $telephone = htmlspecialchars($_POST['telephone']);
-     $nom = htmlspecialchars($_POST['nom']);
-     $prenom = htmlspecialchars($_POST['prenom']);
-     $repeat_pass = htmlspecialchars($_POST['repeat_pass']);
-    
-    $role =0;
-    $userManager = new UserManager();
-    $user = $userManager->createUser(
-      $_POST['prenom'], 
-      $_POST['nom'], 
-      $_POST['email'], 
-      $_POST['telephone'], 
-      $_POST['password'],
-      $role); 
-      header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=login');   
-  }else {
-      echo "Veuillez remplir tous les champs";
-  }
+try {
+
+  if (isset($_POST['register'])) {
+
+    if (
+        !empty($_POST['email']) 
+         && !empty($_POST['password'])
+         && !empty($_POST['nom']) 
+         && !empty($_POST['telephone'])
+         && !empty($_POST['prenom']) ) 
+    {
+      $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
+      $pass_verif = password_verify($_POST['password'], $pass_verif);
+
+      // var_dump(htmlspecialchars($_POST['password']));
+      // die();
+        $email = htmlspecialchars($_POST['email']);
+        $password = $pass_hash;
+        $telephone = htmlspecialchars($_POST['telephone']);
+        $nom = htmlspecialchars($_POST['nom']);
+        $prenom = htmlspecialchars($_POST['prenom']);
+        $role =0;
+
+        $userManager = new UserManager();
+        $user = $userManager->createUser(
+          $prenom, 
+          $nom, 
+          $email, 
+          $telephone, 
+          $password,
+          $role); 
+
+        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=login');   
+      
+    }else {
+        echo "Veuillez remplir tous les champs";
+    }
+  }      
+} catch (\Throwable $th) {
+  
 }
+
 
 require_once 'Auth.php';
 if (isLogin()) {
@@ -73,11 +91,6 @@ if (isLogin()) {
                   <div class="form-outline mb-4">
                     <input type="password" id="password" name="password" class="form-control form-control-lg" />
                     <label class="form-label" for="password">Password</label>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                    <input type="password" id="repeat_pass" name="repeat_pass" class="form-control form-control-lg" />
-                    <label class="form-label" for="repeat_pass">Repeat your password</label>
                   </div>
 
                   <div class="d-flex justify-content-center">
