@@ -44,10 +44,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/blog-oc-p5/OC-blogp5/public/index.php?page=login">Connexion</a>
                         </li>
-                        <?php }?>
                         <li class="nav-item">
                             <a class="nav-link" href="/blog-oc-p5/OC-blogp5/public/index.php?page=register">Inscription</a>
                         </li>
+                        <?php }?>
+                       
                     </ul>
                 </div>
             </nav>
