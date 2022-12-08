@@ -48,47 +48,37 @@ class PostsController extends Controller{
 
     public function createPost(){     
         try {
-            if (isset($_POST['createPost'])) {
-               
+            if (isset($_POST['createPost'])) {      
                 if (
                     !empty($_POST['title']) 
                     && !empty($_POST['content'])) 
                 {
+                    $postManager = new PostManager(); 
+
+                    session_start();
                     $title = htmlspecialchars($_POST['title']);
                     $content = htmlspecialchars($_POST['content']);
-                    $dateCreate = new DateTime();
-                    $updateCreate = new DateTime();
-                    $user_id = $_SESSION['id'];
-                    var_dump('toto', $user_id);
-                    die();
-                    // $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
-            
-                    // // var_dump(htmlspecialchars($_POST['password']));
-                    // // die();
-                   
-                    // $password = $pass_hash;
+                    $createDate = new DateTime();
+                    $updateCreate =new DateTime();        
+                    $user_id = intval($_SESSION['id']);
+                    $comment_id = NULL;
+                  
+                    $post = $postManager->createPost(
+                        $title, 
+                        $content, 
+                        $createDate->format('Y-m-d h:m:i'), 
+                        $updateCreate->format('Y-m-d h:m:i'), 
+                        $user_id,
+                        $comment_id
+                    ); 
                     
-                    // $nom = htmlspecialchars($_POST['nom']);
-                    // $prenom = htmlspecialchars($_POST['prenom']);
-                    // $role =0;
-            
-                    // $userManager = new UserManager();
-                    // $user = $userManager->createUser(
-                    //     $prenom, 
-                    //     $nom, 
-                    //     $email, 
-                    //     $telephone, 
-                    //     $password,
-                    //     $role); 
-            
-                    // header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=login');   
-                    
+                    header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      
                 }else {
                     echo "Veuillez remplir tous les champs";
                 }
             }      
         } catch (\Exception $e) {
-            echo "Error";
+            echo "Une erreur est survenue";
         }
   
         $arrayToTemplate = [

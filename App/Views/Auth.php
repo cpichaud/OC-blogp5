@@ -3,6 +3,7 @@
 function isLogin(): bool {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
+        $_SESSION['id'];
     }
     return !empty($_SESSION['connecte']);
 }

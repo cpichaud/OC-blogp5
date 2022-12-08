@@ -7,7 +7,7 @@ require_once "header.php"?>
 <main class="container">
     <section class="container">
         <div class="form-home">
-            <h2>Créer un post</h2>
+            <h2>Créer un post <?php //echo $_SESSION['name'] ?></h2>
             <form method="POST">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">

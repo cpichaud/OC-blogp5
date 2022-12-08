@@ -13,13 +13,14 @@ class PostManager extends connectionDb
      * @param string $content
      * @param $created_at
      * @param $update_at
-     * @param int $comment_id
+     * @param $comment_id
+     * @param int $user_id
      * @return int
      */
-    public function createPost(string $title, string $content, $created_at, $update_at, int $comment_id)
+    public function createPost(string $title, string $content, $created_at, $update_at, int $user_id, $comment_id)
     {
-        $sql = "INSERT INTO post(content, title, created_at, update_at, comment_id)  
-        VALUES (:content, :title, :created_at, :update_at, :comment_id)" ;
+        $sql = "INSERT INTO post(content, title, created_at, update_at, user_id, comment_id)  
+        VALUES (:content, :title, :created_at, :update_at, :user_id, :comment_id)" ;
         $r = $this->db->prepare($sql);
         $r->execute([
             ':content'    => $content,
@@ -27,6 +28,7 @@ class PostManager extends connectionDb
             ':created_at' => $created_at,
             ':update_at'  => $update_at,
             ':comment_id' => $comment_id,
+            ':user_id'    => $user_id
         ]);
 
         $new = $this->db->lastInsertId();
