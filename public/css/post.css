@@ -10,3 +10,11 @@
 .deleted:after{
     background-color: rgb(196, 4, 4) !important;
 }
+
+.create{
+    background-color: rgb(4, 241, 0) !important;
+}
+
+.create:after{
+    background-color: rgb(18, 216, 0) !important;
+}

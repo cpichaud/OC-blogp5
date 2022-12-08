@@ -15,9 +15,9 @@ if (isset($_POST['submit'])) {
     if($user['email'] !== null && $user['email'] == $email && $pass_verif == $password){
           session_start();
           $_SESSION['connecte'] = 1;
-          $_SESSION['email'] = $user['email'];
           $_SESSION['role'] = $user['role'];
           $_SESSION['id'] = $user['id'];
+          $_SESSION['name'] = $user['nom'];
           $_SESSION['post_id'] = $user['post_id'];
           header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home'); 
       }else{       

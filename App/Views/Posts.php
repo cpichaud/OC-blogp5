@@ -24,6 +24,11 @@ require_once "header.php"?>
     }else{
         echo "Vous n'avez aucun post";
     }?>
+        <div class='container-cv'>
+            <button type='button' class='button create'>
+                <span><a href='index.php?page=Posts&action=createPost'>Créer un post</a></span>
+            </button>
+        </div>
     </section>
 </main>
 
