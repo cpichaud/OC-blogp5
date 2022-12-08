@@ -11,9 +11,12 @@ if (isset($_POST['submit'])) {
     
     $userManager = new UserManager();
     $user = $userManager->findByEmail($_POST['email']); 
-    if($user['email'] !== null && $user['email'] == $email && $user['password'] == $password){
+    $pass_verif = password_verify($_POST['password'], $user['password']);
+    if($user['email'] !== null && $user['email'] == $email && $pass_verif == $password){
           session_start();
           $_SESSION['connecte'] = 1;
+          $_SESSION['email'] = $user['email'];
+          $_SESSION['role'] = $user['role'];
           header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home'); 
       }else{       
           echo "Email ou mot de passe introuvable";
@@ -55,7 +58,6 @@ if (isLogin()) {
                     <button name="submit" class="button">
                         <span>Se connecter</span>
                     </button>
-          
                   </div>
                 </form>
               </div>

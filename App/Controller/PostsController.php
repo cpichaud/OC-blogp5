@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\PostManager;
 use App\Controller\Controller as Controller ;
+use App\Model\UserManager;
 
 class PostsController extends Controller{
 
@@ -33,7 +34,6 @@ class PostsController extends Controller{
     }
 
     public function showById(){
-
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
@@ -45,5 +45,11 @@ class PostsController extends Controller{
         $this->render($arrayToTemplate, "post");  
     }
 
+    public function deletePost(){
+
+        $postManager = new PostManager();  
+        $post = $postManager->delete($_GET['id']);
+        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+    }
 
 }

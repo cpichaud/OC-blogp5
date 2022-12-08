@@ -18,7 +18,15 @@ require_once "header.php"?>
 
     }else{
         echo "Une erreur c'est produite";
-    }?>
+    }
+    if($_SESSION['role'] == 1 && !empty($_SESSION['role'])){    ?>
+        <div class="container-cv">
+            <button name="submit" class="button deleted">            
+                <?php  echo "<span><a href='index.php?page=posts&action=deletePost&amp;id=".$post['id']."'>Supprimer ce post</a></span>";?>
+            </button>
+        </div>  
+
+    <?php } ?>
     </section>
 </main>
 
