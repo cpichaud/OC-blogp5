@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use App\Model\PostManager;
-use App\Controller\Controller as Controller ;
-use App\Model\UserManager;
 use DateTime;
+use App\Model\PostManager;
+use App\Model\UserManager;
+use App\Model\CommentManager;
+use App\Controller\Controller as Controller ;
 
 class PostsController extends Controller{
 
@@ -35,6 +36,7 @@ class PostsController extends Controller{
     }
 
     public function showById(){
+
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
@@ -61,7 +63,6 @@ class PostsController extends Controller{
                     $createDate = new DateTime();
                     $updateCreate =new DateTime();        
                     $user_id = intval($_SESSION['id']);
-                    $comment_id = NULL;
                   
                     $post = $postManager->createPost(
                         $title, 
@@ -69,7 +70,6 @@ class PostsController extends Controller{
                         $createDate->format('Y-m-d h:m:i'), 
                         $updateCreate->format('Y-m-d h:m:i'), 
                         $user_id,
-                        $comment_id
                     ); 
                     
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      

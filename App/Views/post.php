@@ -18,7 +18,6 @@ require_once "header.php"?>
         echo "Une erreur c'est produite";
     }
     if($_SESSION['role'] == 1 && !empty($_SESSION['role']) || $_SESSION['id'] == $post['user_id'] && !empty($_SESSION['id']) ){ ?>
-
         <div class="container-cv">
             <button name="submit" class="button deleted">            
                 <?php  echo "<span><a href='index.php?page=posts&action=deletePost&amp;id=".$post['id']."'>Supprimer ce post</a></span>";?>
@@ -29,8 +28,20 @@ require_once "header.php"?>
                 <?php  echo "<span><a href='index.php?page=posts&action=editPost&amp;id=".$post['id']."'>Modifier votre post</a></span>";?>
             </button>
         </div> 
-    <?php } ?>
-       
+    <?php }; 
+
+    ?>
+    
+    <div class="container-cv">
+            <button name="submit" class="button">            
+                <?php  echo "<span><a href='index.php?page=comment&action=createComment&amp;id=".$post['id']."'>Ajouter un commentaire</a></span>";?>
+            </button>
+        </div> 
+    </section>
+    <section class="section-comment">
+        <div class="container-cv">
+            
+        </div> 
 
     </section>
 </main>
