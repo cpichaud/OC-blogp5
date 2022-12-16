@@ -9,7 +9,6 @@ require_once "header.php"?>
         <div class="form-home">
             <h2>Créer un post <?php //echo $_SESSION['name'] ?></h2>
             <form method="POST">
-                <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
                     <div class="col">
                         <div class="form-outline">
@@ -17,20 +16,17 @@ require_once "header.php"?>
                             <label class="form-label" for="title">Titre</label>
                         </div>
                     </div>
-                    <!-- <div class="col">
+                   <div class="col">
                         <div class="form-outline">
-                            <input type="text" id="form3Example2" class="form-control" />
-                            <label class="form-label" for="form3Example2">Image</label>
+                            <input type="text" id="chapo" class="form-control" name="chapo"/>
+                            <label class="form-label" for="chapo">Chapô</label>
                         </div>
-                    </div> -->
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="textarea" id="content" class="form-control" name="content" />
+                        <label class="form-label" for="content">Contenue</label>
+                    </div>
                 </div>
-
-                <!-- Message input -->
-                <div class="form-outline mb-4">
-                    <input type="textarea" id="content" class="form-control" name="content" />
-                    <label class="form-label" for="content">Contenue</label>
-                </div>
-
                 <!-- Submit button -->
                 <button type="submit" name="createPost" class="btn btn-primary btn-block mb-4">Créer votre post</button>
             </form>

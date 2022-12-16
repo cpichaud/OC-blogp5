@@ -55,13 +55,15 @@ class PostsController extends Controller{
             if (isset($_POST['createPost'])) {      
                 if (
                     !empty($_POST['title']) 
-                    && !empty($_POST['content'])) 
+                    && !empty($_POST['content'])
+                    && !empty($_POST['chapo'])) 
                 {
                     $postManager = new PostManager(); 
 
                     session_start();
                     $title = htmlspecialchars($_POST['title']);
                     $content = htmlspecialchars($_POST['content']);
+                    $chapo = htmlspecialchars($_POST['chapo']);
                     $createDate = new DateTime();
                     $updateCreate =new DateTime();        
                     $user_id = intval($_SESSION['id']);
@@ -72,6 +74,7 @@ class PostsController extends Controller{
                         $createDate->format('Y-m-d h:m:i'), 
                         $updateCreate->format('Y-m-d h:m:i'), 
                         $user_id,
+                        $chapo
                     ); 
                     
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      
@@ -107,6 +110,7 @@ class PostsController extends Controller{
                     $updateCreate =new DateTime();        
                     $user_id = intval($_SESSION['id']);
                     $id = intval($post['id']);
+                    $chapo = htmlspecialchars($_POST['chapo']);
                   
                     $post = $postManager->editPost(
                         $id,
@@ -114,6 +118,7 @@ class PostsController extends Controller{
                         $content,  
                         $updateCreate->format('Y-m-d H:i:s'), 
                         $user_id,
+                        $chapo
                     ); 
                     
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      

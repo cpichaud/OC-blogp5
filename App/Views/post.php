@@ -11,6 +11,7 @@ require_once "header.php"?>
          echo "<div class='all-posts' >
          Post :".$post['id'].":
              <h2>".$post['title']."</h2>
+             <h2>".$post['chapo']."</h2>
              <p>".$post['content']."</p>
              <p>".$post['created_at']."</p>
          <div>";
