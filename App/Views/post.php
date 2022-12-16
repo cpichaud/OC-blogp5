@@ -29,8 +29,21 @@ require_once "header.php"?>
             </button>
         </div> 
     <?php }; 
-
-    ?>
+    
+    // COMMENTAIRE 
+    if (!empty($comment)) {
+        foreach ($comment as $value ) {
+            echo "
+            <div class='all-posts' >
+                <h2>".$value['title']."</h2>
+                <p>".$value['content']."</p>
+                <p>".$value['created_at']."</p>
+                <p>".$value['firstname']."</p>
+            <div>";
+       } 
+    }else{
+        echo "Vous n'avez aucun commentaire";
+    }?>
     
     <div class="container-cv">
             <button name="submit" class="button">            
