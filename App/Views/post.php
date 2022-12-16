@@ -33,6 +33,7 @@ require_once "header.php"?>
 
     // COMMENTAIRE 
     if (!empty($comment)) {
+        
         foreach ($comment as $value ) {
             echo "
             <div class='all-posts' >
@@ -40,14 +41,16 @@ require_once "header.php"?>
                 <p>".$value['content']."</p>
                 <p>".$value['created_at']."</p>
                 <p>".$value['firstname']."</p>
-            <div>"; ?>
+            <div>"; 
+            if($_SESSION['role'] == 1 && !empty($_SESSION['role']) || $_SESSION['id'] == $post['user_id'] && !empty($_SESSION['id']) ){?>
             <!-- DELETE COMMENT -->
             <div class="container-cv">
             <button name="submit" class="button deleted">            
                 <?php  echo "<span><a href='index.php?page=posts&action=deleteComment&amp;id=".$value['id']."'>Supprimer ce commentaire</a></span>";?>
             </button>
             </div> 
-      <?php } 
+      <?php };
+        };
     }else{
         echo "Vous n'avez aucun commentaire";
     }?>
