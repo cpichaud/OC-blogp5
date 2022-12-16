@@ -61,18 +61,7 @@ class CommentManager extends connectionDb
         return $r;
 
         return new comment($commentId->fetch());
-
     }
-
-    // public function findByEmail(string $email)
-    // {
-    //     $sql = "SELECT * FROM comment WHERE email = ?" ;
-    //     $commentEmail = $this->db->prepare($sql);
-    //     $commentEmail->bindValue(1, $email, PDO::PARAM_STR);
-    //     $commentEmail->execute();
-    //     $r = $commentEmail->fetch();
-    //     return new comment($r);
-    // }
 
     public function Delete(int $id)
     {
