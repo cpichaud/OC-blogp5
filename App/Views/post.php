@@ -61,13 +61,6 @@ require_once "header.php"?>
                 <?php  echo "<span><a href='index.php?page=comment&action=createComment&amp;id=".$post['id']."'>Ajouter un commentaire</a></span>";?>
             </button>
         </div> 
-
-    </section>
-    <section class="section-comment">
-        <div class="container-cv">
-            
-        </div> 
-
     </section>
 </main>
 
