@@ -38,7 +38,6 @@ class PostsController extends Controller{
     public function showById(){
         $commentManager = new CommentManager();
         $comment = $commentManager->findById($_GET['id']);
-        var_dump($comment);
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
@@ -136,6 +135,12 @@ class PostsController extends Controller{
     public function deletePost(){
         $postManager = new PostManager();  
         $post = $postManager->delete($_GET['id']);
+        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+    }
+
+    public function deleteComment(){
+        $commentManager = new CommentManager();
+        $comment = $commentManager->delete($_GET['id']);
         header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
     }
 }

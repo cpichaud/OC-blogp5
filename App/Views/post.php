@@ -30,6 +30,7 @@ require_once "header.php"?>
         </div> 
     <?php }; 
     
+
     // COMMENTAIRE 
     if (!empty($comment)) {
         foreach ($comment as $value ) {
@@ -39,17 +40,25 @@ require_once "header.php"?>
                 <p>".$value['content']."</p>
                 <p>".$value['created_at']."</p>
                 <p>".$value['firstname']."</p>
-            <div>";
-       } 
+            <div>"; ?>
+            <!-- DELETE COMMENT -->
+            <div class="container-cv">
+            <button name="submit" class="button deleted">            
+                <?php  echo "<span><a href='index.php?page=posts&action=deleteComment&amp;id=".$value['id']."'>Supprimer ce commentaire</a></span>";?>
+            </button>
+            </div> 
+      <?php } 
     }else{
         echo "Vous n'avez aucun commentaire";
     }?>
-    
-    <div class="container-cv">
+   
+   <!-- ADD COMMENT -->
+        <div class="container-cv">
             <button name="submit" class="button">            
                 <?php  echo "<span><a href='index.php?page=comment&action=createComment&amp;id=".$post['id']."'>Ajouter un commentaire</a></span>";?>
             </button>
         </div> 
+
     </section>
     <section class="section-comment">
         <div class="container-cv">

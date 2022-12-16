@@ -18,8 +18,6 @@ try {
     {
       $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
 
-      // var_dump(htmlspecialchars($_POST['password']));
-      // die();
         $email = htmlspecialchars($_POST['email']);
         $password = $pass_hash;
         $telephone = htmlspecialchars($_POST['telephone']);
