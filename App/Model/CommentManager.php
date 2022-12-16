@@ -54,11 +54,10 @@ class CommentManager extends connectionDb
 
     public function findById(int $id)
     {
-        $sql = "SELECT * FROM comment WHERE post_id = ?" ;
+        $sql = " SELECT comment.*, user.firstname FROM comment INNER JOIN user ON comment.user_id = user.id   WHERE post_id = ?" ;
         $commentId = $this->db->prepare($sql);
-        //$commentId->bindValue(1, $id, PDO::PARAM_INT);
         $commentId->execute([$id]);
-        $r = $commentId->fetch();
+        $r = $commentId->fetchAll();
         return $r;
 
         return new comment($commentId->fetch());

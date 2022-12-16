@@ -36,13 +36,16 @@ class PostsController extends Controller{
     }
 
     public function showById(){
-
+        $commentManager = new CommentManager();
+        $comment = $commentManager->findById($_GET['id']);
+        var_dump($comment);
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'post' => $post,
+            'comment' => $comment
         ];
         
         $this->render($arrayToTemplate, "post");  
