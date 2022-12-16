@@ -9,28 +9,27 @@ use App\Entity\Comment;
 class CommentManager extends connectionDb
 {
 
-
- 
-
     /**
      * @param string $title
      * @param string $content
      * @param $created_at
-     * @param $update_at
+     * @param $updated_at
      * @param int $user_id
+     * @param int $post_id
      * @return int
      */
-    public function createComment(string $title, string $content, $created_at, $update_at, int $user_id)
+    public function createComment(string $title, string $content, $created_at, $updated_at, int $user_id, int $post_id)
     {
-        $sql = "INSERT INTO comment(content, title, created_at, update_at, user_id, role)  
-        VALUES (:content, :title, :created_at, :update_at, :user_id, :role)" ;
+        $sql = "INSERT INTO comment(content, title, created_at, updated_at, user_id, post_id)  
+        VALUES (:content, :title, :created_at, :updated_at, :user_id, :post_id)" ;
         $r = $this->db->prepare($sql);
         $r->execute([
             ':content' => $content,
             ':title'  => $title,
             ':created_at'     => $created_at,
-            ':update_at'     => $update_at,
+            ':updated_at'     => $updated_at,
             ':user_id'  => $user_id,
+            ':post_id' => $post_id
         ]);
 
         $new = $this->db->lastInsertId();
@@ -55,10 +54,12 @@ class CommentManager extends connectionDb
 
     public function findById(int $id)
     {
-        $sql = "SELECT * FROM comment WHERE id = ?" ;
+        $sql = "SELECT * FROM comment WHERE post_id = ?" ;
         $commentId = $this->db->prepare($sql);
-        $commentId->bindValue(1, $id, PDO::PARAM_INT);
-        $commentId->execute();
+        //$commentId->bindValue(1, $id, PDO::PARAM_INT);
+        $commentId->execute([$id]);
+        $r = $commentId->fetch();
+        return $r;
 
         return new comment($commentId->fetch());
 

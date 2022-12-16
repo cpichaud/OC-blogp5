@@ -10,7 +10,7 @@ class Comment
     private $content;
     private $title;
     private $created_at;
-    private $update_at;
+    private $updated_at;
 
 
     function __construct()
@@ -49,13 +49,13 @@ class Comment
         $this->created_at = $created_at;
     }
 
-    public function getUpdate_at()
+    public function getupdated_at()
     {
-        return $this->update_at;
+        return $this->updated_at;
     }
-    public function setUpdate_at($update_at)
+    public function setupdated_at($updated_at)
     {
-        $this->update_at = $update_at;
+        $this->updated_at = $updated_at;
     }
 
     public function __toString()
