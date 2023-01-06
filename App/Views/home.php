@@ -51,8 +51,8 @@
 
         <!-- Message input -->
         <div class="form-outline mb-4">
-          <input type="textarea" id="form3Example4" class="form-control" />
-          <label class="form-label" for="form3Example4">Message</label>
+          <textarea id="content" class="form-control" name="content"></textarea> 
+          <label class="form-label" for="content">Message</label> 
         </div>
 
         <!-- Submit button -->

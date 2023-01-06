@@ -27,9 +27,9 @@ require_once "header.php"?>
 
                 <!-- Message input -->
                 <div class="form-outline mb-4">
-                    <input type="textarea" id="content" class="form-control" name="content" />
-                    <label class="form-label" for="content">Contenue</label>
-                </div>
+                        <textarea id="content" class="form-control" name="content"></textarea> 
+                        <label class="form-label" for="content">Contenue</label> 
+                    </div>
 
                 <!-- Submit button -->
                 <button type="submit" name="createComment" class="btn btn-primary btn-block mb-4">Ajouter</button>
