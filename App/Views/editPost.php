@@ -17,12 +17,12 @@ require_once "header.php"?>
                             <label class="form-label" for="title">Titre</label>
                         </div>
                     </div>
-                    <!-- <div class="col">
+                    <div class="col">
                         <div class="form-outline">
-                            <input type="text" id="form3Example2" class="form-control" />
-                            <label class="form-label" for="form3Example2">Image</label>
+                            <input type="text" id="chapo" class="form-control" name="chapo"/>
+                            <label class="form-label" for="chapo">Chapô</label>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
                 <!-- Message input -->

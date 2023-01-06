@@ -13,6 +13,7 @@ require_once "header.php"?>
             <div class='all-posts' >
                 <p>Post :".$value['id'].":</p>
                 <h2>".$value['title']."</h2>
+                <p>".$value['chapo']."</p>
                 <p>".$value['content']."</p>
                 <p>".$value['created_at']."</p>
                 <div class='container-cv'>
