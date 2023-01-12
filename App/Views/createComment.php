@@ -4,7 +4,7 @@ require_once "Auth.php";
 userLogin();
 require_once "header.php"?>
 
-<main class="container">
+<main class="container mt-5">
     <section class="container">
         <div class="form-home">
             <h2>Ajouter un commentaire <?php //echo $_SESSION['name'] ?></h2>
@@ -17,12 +17,6 @@ require_once "header.php"?>
                             <label class="form-label" for="title">Titre</label>
                         </div>
                     </div>
-                    <!-- <div class="col">
-                        <div class="form-outline">
-                            <input type="text" id="form3Example2" class="form-control" />
-                            <label class="form-label" for="form3Example2">Image</label>
-                        </div>
-                    </div> -->
                 </div>
 
                 <!-- Message input -->
@@ -37,5 +31,5 @@ require_once "header.php"?>
         </div>
     </section>
 </main>
-
+<div class="footer-other"></div>
 <?php require "footer.php"?>

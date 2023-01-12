@@ -14,7 +14,7 @@ require_once "header.php"?>
              <h2>".$post['chapo']."</h2>
              <p>".$post['content']."</p>
              <p>".$post['created_at']."</p>
-         <div>";
+         </div>";
     }else{
         echo "Une erreur c'est produite";
     }
@@ -29,26 +29,28 @@ require_once "header.php"?>
                 <?php  echo "<span><a href='index.php?page=posts&action=editPost&amp;id=".$post['id']."'>Modifier votre post</a></span>";?>
             </button>
         </div> 
+    </section>
+    <section class="comment">
+        <h2 class ="title-comment m-5">Commentaire</h2>
     <?php }; 
     
-
     // COMMENTAIRE 
     if (!empty($comment)) {
         
         foreach ($comment as $value ) {
             echo "
-            <div class='all-posts' >
+            <div >
                 <h2>".$value['title']."</h2>
                 <p>".$value['content']."</p>
                 <p>".$value['created_at']."</p>
                 <p>".$value['firstname']."</p>
-            <div>"; 
+            </div>"; 
             if($_SESSION['role'] == 1 && !empty($_SESSION['role']) || $_SESSION['id'] == $post['user_id'] && !empty($_SESSION['id']) ){?>
             <!-- DELETE COMMENT -->
             <div class="container-cv">
-            <button name="submit" class="button deleted">            
-                <?php  echo "<span><a href='index.php?page=posts&action=deleteComment&amp;id=".$value['id']."'>Supprimer ce commentaire</a></span>";?>
-            </button>
+                <button name="submit" class="button deleted">            
+                    <?php echo "<span><a href='index.php?page=posts&action=deleteComment&amp;id=".$value['id']."'>Supprimer ce commentaire</a></span>";?>
+                </button>
             </div> 
       <?php };
         };

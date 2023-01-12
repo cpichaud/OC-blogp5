@@ -23,3 +23,11 @@
 .all-posts:nth-child(even){ 
     background-color: rgb(241 241 241);
 }
+
+.comment{
+    background-color: white;
+}
+.title-comment{
+    text-align: center;
+    font-size: xxx-large;
+}
