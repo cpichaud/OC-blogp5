@@ -24,7 +24,7 @@ require_once "header.php"?>
                     </div>
                     <div class="form-outline mb-4">
                         <textarea id="content" class="form-control" name="content"></textarea> 
-                        <label class="form-label" for="chapo">Contenue</label> 
+                        <label class="form-label" for="content">Contenue</label> 
                     </div>
                 </div>
                 <!-- Submit button -->

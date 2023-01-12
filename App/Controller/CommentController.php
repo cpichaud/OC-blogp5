@@ -21,32 +21,6 @@ class CommentController extends Controller{
         $this->commentManager = new CommentManager();
     }
 
-
-    // public function show(){
- 
-    //     $comment = $this->commentManager->findAll();
-    //     $content = "ceci est le contenu de mon post.";
-
-    //     $arrayToTemplate = [
-    //         'title' => 'Camille PICHAUD', 
-    //         'Accueil' => [],
-    //         'comment' => $comment,
-    //     ];  
-    //     $this->render($arrayToTemplate, __CLASS__); 
-    // }
-
-    // public function showById(){
-    //     $postManager = new PostManager();  
-    //     $post = $postManager->findById($_GET['id']);
-    //     $arrayToTemplate = [
-    //         'title' => 'Camille PICHAUD', 
-    //         'Accueil' => [],
-    //         'post' => $post,
-    //     ];
-        
-    //     $this->render($arrayToTemplate, "post");  
-    // }
-
     public function createComment(){     
         try {
             if (isset($_POST['createComment'])) {      
