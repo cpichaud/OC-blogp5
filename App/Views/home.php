@@ -1,13 +1,12 @@
 <!--HEADER-->
 
-<?php require "Auth.php"?>
- 
+<?php 
+require "Auth.php" ;
+require "header.php"?>
 
-<?php require "header.php"?>
 <section class="top-home">
     <div class="container">
         <div class="logo text-center text-light">
-            <!--<img src="../../public/images/home/logo.jpg" alt="logo" style="width: 300px;">-->
             <div class="name-home">    
 
             </div>
@@ -19,45 +18,48 @@
     <section>
     <div class="container-cv">
       <button type="button" class="button">
-      <span><a href="/public/pdf/CV_PICHAUD_Camille.png" download>TÉLÉCHARGER MON CV</a></span>
+      <span><a href="../public/pdf/CV_PICHAUD_Camille.png" download>TÉLÉCHARGER MON CV</a></span>
       </button>
     </div>
         
     </section>
     <section class="form-home">
       <h2>POUR ME CONTACTER</h2>
-      <form>
-        <!-- 2 column grid layout with text inputs for the first and last names -->
+
+      <form method="POST" action ="/blog-oc-p5/OC-blogp5/public/index.php?page=home&action=contactForm">
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
-              <input type="text" id="form3Example1" class="form-control" />
-              <label class="form-label" for="form3Example1">Nom</label>
+              <input type="text" id="nom_contact" class="form-control" name="nom_contact"/>
+              <label class="form-label" for="nom_contact">Nom*</label>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
-              <input type="text" id="form3Example2" class="form-control" />
-              <label class="form-label" for="form3Example2">Prénom</label>
+              <input type="text" id="prenom_contact" class="form-control" name="prenom_contact"/>
+              <label class="form-label" for="prenom_contact">Prénom*</label>
             </div>
           </div>
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="form3Example3" class="form-control" />
-          <label class="form-label" for="form3Example3">Email</label>
+          <input type="email" id="email_contact" class="form-control"  name="email_contact"/>
+          <label class="form-label" for="email_contact">Email*</label>
         </div>
 
         <!-- Message input -->
         <div class="form-outline mb-4">
           <textarea id="content" class="form-control" name="content"></textarea> 
-          <label class="form-label" for="content">Message</label> 
+          <label class="form-label" for="content">Message*</label> 
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
-
+        <div class="d-flex justify-content-center">
+            <button type="submit" name="contact_form" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-light mb-5">
+              Envoyer
+            </button>
+        </div>
       </form>
     </section>
 </main>
