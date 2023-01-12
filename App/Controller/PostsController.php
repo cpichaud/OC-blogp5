@@ -79,7 +79,13 @@ class PostsController extends Controller{
                     
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      
                 }else {
-                    echo "Veuillez remplir tous les champs";
+                    $error_message = 'Veuillez remplir tous les champs';
+                    $class = "error";
+                    $arrayToTemplate = [
+                        'error_message' => $error_message,
+                        'class' => $class
+                    ];
+                    $this->render($arrayToTemplate, 'createPost'); 
                 }
             }      
         } catch (\Exception $e) {
