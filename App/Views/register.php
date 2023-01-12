@@ -64,7 +64,7 @@ if (isLogin()) {
 }
         
 ?>
-<main class="register-image">
+<main class="register-image mt-5">
   <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">

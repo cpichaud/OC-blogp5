@@ -4,7 +4,7 @@ require_once "Auth.php";
 userLogin();
 require_once "header.php"?>
 
-<main class="container">
+<main class="container mt-5">
     <section class="container">
         <div class="form-home">
             <h2>Modifier votre post <?php //echo $_SESSION['name'] ?></h2>
@@ -37,5 +37,5 @@ require_once "header.php"?>
         </div>
     </section>
 </main>
-
+<div class="footer-other"></div>
 <?php require "footer.php"?>
