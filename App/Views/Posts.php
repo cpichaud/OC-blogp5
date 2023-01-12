@@ -5,6 +5,9 @@ userLogin();
 require_once "header.php"?>
 
 <main>
+    <?php if (isset($error_message)) {
+        echo "<p class='$class'>$error_message</p";
+    } ?>
     <section class="posts-section">
 
     <?php if (!empty($posts)) {
