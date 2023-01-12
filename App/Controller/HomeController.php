@@ -65,20 +65,23 @@ class HomeController extends Controller{
                 
                 mail($emailSend, $sujet, $message, $header);     
  
-                $messageError = 'ok';
-                
+ 
+                $error_message= 'Votre Message à bien été envoyé';
+                $class = "success";
                 $arrayToTemplate = [
-                    'messageError' => $messageError
+                    'error_message' => $error_message,
+                    'class' => $class
                 ];
                 $this->render($arrayToTemplate, 'home'); 
-                
-                }else {
-                    $messageError = 'Veuillez remplir tous les champs';
-                    $arrayToTemplate = [
-                        'messageError' => $messageError
-                    ];
-                    $this->render($arrayToTemplate, 'home'); 
-                }
-            }      
+            }else {
+                $error_message = 'Veuillez remplir tous les champs';
+                $class = "error";
+                $arrayToTemplate = [
+                    'error_message' => $error_message,
+                    'class' => $class
+                ];
+                $this->render($arrayToTemplate, 'home'); 
+            }
+        }      
     }
 }

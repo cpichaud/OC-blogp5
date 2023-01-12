@@ -25,7 +25,9 @@ require "header.php"?>
     </section>
     <section class="form-home">
       <h2>POUR ME CONTACTER</h2>
-
+      <?php if (isset($error_message)) {
+              echo "<p class='$class'>$error_message</p";
+      } ?>
       <form method="POST" action ="/blog-oc-p5/OC-blogp5/public/index.php?page=home&action=contactForm">
         <div class="row mb-4">
           <div class="col">

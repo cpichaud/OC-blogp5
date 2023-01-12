@@ -7,7 +7,10 @@ require_once "header.php"?>
 <main class="container mt-5">
     <section class="container">
         <div class="form-home">
-            <h2>Créer un post <?php //echo $_SESSION['name'] ?></h2>
+            <h2>Créer un post</h2>
+            <?php if (isset($error_message)) {
+                    echo "<p class='$class'>$error_message</p";
+            } ?>   
             <form method="POST">
                 <div class="row mb-4">
                     <div class="col">
