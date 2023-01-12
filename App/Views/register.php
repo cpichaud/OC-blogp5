@@ -34,6 +34,19 @@ try {
           $password,
           $role); 
 
+          //Email 
+          $emailSend = $email;
+          $sujet = "Inscription";
+          $messages = "Nous vous confirmons votre inscription";
+
+          $message .= "Email: $email\n";
+          $message .= "Nom: $nom\n";
+          $message .= "Message: $messages\n";
+          $header = "From: camillepichaud@myddleware.com";
+
+          mail($emailSend, $sujet, $message, $header);                    //Email 
+
+
         header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=login');   
       
     }else {

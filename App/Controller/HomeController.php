@@ -20,10 +20,7 @@ class HomeController extends Controller{
 
 
     public function show(){
-        $content = "ceci est le contenu de ma page. ";
-    
-
-     
+        $content = "ceci est le contenu de ma page. "; 
         $userTest = $this->userManager->findAll();
 
         foreach($userTest as $user){
