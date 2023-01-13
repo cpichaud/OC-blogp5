@@ -37,7 +37,13 @@ Créez votre premier blog en PHP - [Ici](https://openclassrooms.com/fr/paths/500
 ## Configurez votre environnement
 Si vous souhaitez installer ce projet sur votre ordinateur, vous devrez d'abord cloner le référentiel de ce projet à l'aide de Git.
 
-A la racine de votre projet, vous devez créer un fichier .env (même niveau que .env.example) dans lequel vous devez configurer les valeurs appropriées pour que votre blog fonctionne :
+Dans le dossier config puis connectionDb.php de votre projet, vous devez configurer les valeurs appropriées pour que votre blog fonctionne comme l'exemple si dessous :
+
+        $host = "localhost";
+        $dbName = "blogdb_p5";
+        $user = "root";
+        $password = "password";
+        $chartset ="utf8";
 
 ## Badge du projet
 
