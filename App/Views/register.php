@@ -1,7 +1,7 @@
 <!--HEADER-->
 <?php 
-require_once "Auth.php";
-require_once "header.php"
+require("Auth.php");
+require("header.php")
 ?>
 <?php
 use App\Model\UserManager;
@@ -57,8 +57,7 @@ try {
   echo "Error";
 }
 
-
-require_once 'Auth.php';
+require("Auth.php");
 if (isLogin()) {
   header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home');
 }

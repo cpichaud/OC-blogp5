@@ -5,10 +5,7 @@ use App\Model\UserManager;
 
 
 
-require_once 'Auth.php';
-if (isLogin()) {
-  header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home');
-}
+require("Auth.php");
         
 ?>
 <?php require "header.php";?>
