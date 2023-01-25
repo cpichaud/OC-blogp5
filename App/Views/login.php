@@ -21,6 +21,9 @@ if (isLogin()) {
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Connexion</h2>
+                <?php if (isset($error_message)) {
+                    echo "<p class='$class'>$error_message</p";
+                } ?> 
 
                 <form method="POST" action ="/blog-oc-p5/OC-blogp5/public/index.php?page=login&action=loginAction">
                   <div class="form-outline mb-4">

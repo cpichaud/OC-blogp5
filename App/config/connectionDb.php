@@ -17,7 +17,7 @@ class connectionDb
         $password = "root";
         $chartset ="utf8";
 
-        $this->db = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset='.$chartset.'', ''.$user.'', ''.$password.'',
+        $this->db = new PDO('mysql:host=localhost;dbname=blogdb_p5;charset=utf8', 'root', 'root',
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
         
     }
