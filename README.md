@@ -47,4 +47,4 @@ Dans le dossier config puis connectionDb.php de votre projet, vous devez configu
 
 ## Badge du projet
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ad8b8c1e2a4e4c03b5f8687426d4f9bc)](https://www.codacy.com/manual/utilisateur/projet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cpichaud/OC-blogp5&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f8158864133740efa94cdb4c2df9c6fb)](https://www.codacy.com/gh/cpichaud/OC-blogp5/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cpichaud/OC-blogp5&amp;utm_campaign=Badge_Grade)
