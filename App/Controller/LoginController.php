@@ -55,11 +55,15 @@ class LoginController extends Controller{
                     $_SESSION['post_id'] = $user['post_id'];
 
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home'); 
-                }else{       
-                    echo "Email ou mot de passe introuvable";
+                }else{     
+                    $error_message = 'Email ou mot de passe introuvable';
+                    $class = "error";
+                    $arrayToTemplate = [
+                        'error_message' => $error_message,
+                        'class' => $class
+                    ];
+                    $this->render($arrayToTemplate, 'login');   
                 } 
-                
-
             }else {
                 echo "Une erreur c'est produite";
                 header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=login&action=loginAction');
