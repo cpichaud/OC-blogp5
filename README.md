@@ -39,11 +39,7 @@ Si vous souhaitez installer ce projet sur votre ordinateur, vous devrez d'abord 
 
 Dans le dossier config puis connectionDb.php de votre projet, vous devez configurer les valeurs appropriées pour que votre blog fonctionne comme l'exemple si dessous :
 
-        $host = "localhost";
-        $dbName = "blogdb_p5";
-        $user = "root";
-        $password = "password";
-        $chartset ="utf8";
+        $this->db = new PDO('mysql:host=localhost;dbname=blogdb_p5;charset=utf8', 'user', 'password',
 
 ## Badge du projet
 
