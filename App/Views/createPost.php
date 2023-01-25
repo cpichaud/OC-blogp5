@@ -1,8 +1,8 @@
 <!--HEADER-->
 <?php 
-require_once "Auth.php";
+require("Auth.php");
 userLogin();
-require_once "header.php"?>
+require("header.php")?>
 
 <main class="container mt-5">
     <section class="container">

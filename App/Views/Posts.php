@@ -1,8 +1,8 @@
 <!--HEADER-->
 <?php 
-require_once "Auth.php";
+require("Auth.php");
 userLogin();
-require_once "header.php"?>
+require("header.php")?>
 
 <main>
     <?php if (isset($error_message)) {
