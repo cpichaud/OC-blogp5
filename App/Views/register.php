@@ -57,13 +57,13 @@ try {
   echo "Error";
 }
 
-require("Auth.php");
+
 if (isLogin()) {
   header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=home');
 }
         
 ?>
-<main class="register-image mt-5">
+<main class="register-image">
   <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">

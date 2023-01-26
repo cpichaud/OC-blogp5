@@ -17,8 +17,9 @@ require("header.php")?>
                 <p>Post :".$value['id'].":</p>
                 <h2>".$value['title']."</h2>
                 <p>".$value['chapo']."</p>
-                <p>".$value['content']."</p>
-                <p>".$value['created_at']."</p>
+                <p class='text'>".$value['content']."</p>
+                <p>Date création du post: ".$value['created_at']."</p>
+                <p>Dernière mis à jours: ".$value['update_at']."</p>
                 <div class='container-cv'>
                     <button type='button' class='button'>
                         <span><a href='index.php?page=posts&action=showById&amp;id=".$value['id']."'>Plus de d'information</a></span>
@@ -28,12 +29,15 @@ require("header.php")?>
        } 
     }else{
         echo "Vous n'avez aucun post";
-    }?>
+    }
+    
+    if($_SESSION['role'] == 1 || !empty($_SESSION['role']) ){?>
         <div class='container-cv'>
             <button type='button' class='button create'>
                 <span><a href='index.php?page=Posts&action=createPost'>Créer un post</a></span>
             </button>
-        </div>
+        </div>    
+    <?php } ?>
     </section>
 </main>
 

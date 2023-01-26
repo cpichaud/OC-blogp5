@@ -45,7 +45,7 @@ require("header.php")?>
                 <p>".$value['created_at']."</p>
                 <p>".$value['firstname']."</p>
             </div>"; 
-            if($_SESSION['role'] == 1 && !empty($_SESSION['role']) || $_SESSION['id'] == $post['user_id'] && !empty($_SESSION['id']) ){?>
+            if($_SESSION['role'] == 1 || !empty($_SESSION['role']) || $_SESSION['id'] == $value['user_id'] && !empty($_SESSION['id']) ){?>
             <!-- DELETE COMMENT -->
             <div class="container-cv">
                 <button name="submit" class="button deleted">            

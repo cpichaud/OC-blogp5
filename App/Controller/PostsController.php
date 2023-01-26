@@ -25,7 +25,6 @@ class PostsController extends Controller{
     public function show(){
  
         $posts = $this->postManager->findAll();
-        $content = "ceci est le contenu de mon post.";
 
         $arrayToTemplate = [
             'title' => 'Camille PICHAUD', 
