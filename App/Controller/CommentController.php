@@ -38,6 +38,7 @@ class CommentController extends Controller{
                     $user_id = intval($_SESSION['id']);
                     $post_id =  $postManager->findById($_GET['id']);
                     $post_id = intval($post_id['id']);
+                    $validate = 0;
 
                     $comment = $commentManager->createComment(
                         $title, 
@@ -45,7 +46,8 @@ class CommentController extends Controller{
                         $created_at->format('Y-m-d H:i:s'), 
                         $updated_at->format('Y-m-d H:i:s'), 
                         $user_id,
-                        $post_id
+                        $post_id,
+                        $validate
                     ); 
                     
                     header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      

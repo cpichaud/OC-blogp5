@@ -159,4 +159,18 @@ class PostsController extends Controller{
         $comment = $commentManager->delete($_GET['id']);
         header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
     }
+
+    public function validateComment(){
+        try {
+            $commentManager = new CommentManager();   
+            $id = intval($_GET['id']);
+            $validate = intval(1);
+            $commentManager->validateComment(
+                $id);   
+            header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+                
+        } catch (\Exception $e) {
+            echo "Une erreur est survenue";
+        }
+    }
 }
