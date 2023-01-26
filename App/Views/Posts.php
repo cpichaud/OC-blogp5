@@ -28,12 +28,15 @@ require("header.php")?>
        } 
     }else{
         echo "Vous n'avez aucun post";
-    }?>
+    }
+    
+    if($_SESSION['role'] == 1 || !empty($_SESSION['role']) ){?>
         <div class='container-cv'>
             <button type='button' class='button create'>
                 <span><a href='index.php?page=Posts&action=createPost'>Créer un post</a></span>
             </button>
-        </div>
+        </div>    
+    <?php } ?>
     </section>
 </main>
 
