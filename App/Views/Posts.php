@@ -18,7 +18,8 @@ require("header.php")?>
                 <h2>".$value['title']."</h2>
                 <p>".$value['chapo']."</p>
                 <p>".$value['content']."</p>
-                <p>".$value['created_at']."</p>
+                <p>Date création du post: ".$value['created_at']."</p>
+                <p>Dernière mis à jours: ".$value['update_at']."</p>
                 <div class='container-cv'>
                     <button type='button' class='button'>
                         <span><a href='index.php?page=posts&action=showById&amp;id=".$value['id']."'>Plus de d'information</a></span>
