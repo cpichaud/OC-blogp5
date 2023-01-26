@@ -100,6 +100,7 @@ class PostsController extends Controller{
 
     public function editPost(){     
         try {
+            $this->placeholder();
             $postManager = new PostManager();  
             $post = $postManager->findById($_GET['id']);
             if (isset($_POST['createPost'])) {      
@@ -172,5 +173,16 @@ class PostsController extends Controller{
         } catch (\Exception $e) {
             echo "Une erreur est survenue";
         }
+    }
+
+    public function placeholder(){
+        $postManager = new PostManager();  
+        $post = $postManager->findById($_GET['id']);
+
+
+        $arrayToTemplate = [
+            'post' => $post,
+        ];
+        $this->render($arrayToTemplate, 'editPost'); 
     }
 }
