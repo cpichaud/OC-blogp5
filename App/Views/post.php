@@ -38,21 +38,30 @@ require("header.php")?>
     if (!empty($comment)) {
         
         foreach ($comment as $value ) {
-            echo "
-            <div >
-                <h2>".$value['title']."</h2>
-                <p>".$value['content']."</p>
-                <p>".$value['created_at']."</p>
-                <p>".$value['firstname']."</p>
-            </div>"; 
-            if($_SESSION['role'] == 1 || !empty($_SESSION['role']) || $_SESSION['id'] == $value['user_id'] && !empty($_SESSION['id']) ){?>
-            <!-- DELETE COMMENT -->
-            <div class="container-cv">
-                <button name="submit" class="button deleted">            
-                    <?php echo "<span><a href='index.php?page=posts&action=deleteComment&amp;id=".$value['id']."'>Supprimer ce commentaire</a></span>";?>
-                </button>
-            </div> 
-      <?php };
+            if ($value['validate'] == 1 || $_SESSION['role'] == 1) {
+                echo "
+                <div >
+                    <h2>".$value['title']."</h2>
+                    <p>".$value['content']."</p>
+                    <p>".$value['created_at']."</p>
+                    <p>".$value['firstname']."</p>
+                </div>"; 
+                if($_SESSION['role'] == 1 || !empty($_SESSION['role']) || $_SESSION['id'] == $value['user_id'] && !empty($_SESSION['id']) ){?>
+                <!-- DELETE COMMENT -->
+                <div class="container-cv">
+                    <button name="submit" class="button deleted">            
+                        <?php echo "<span><a href='index.php?page=posts&action=deleteComment&amp;id=".$value['id']."'>Supprimer ce commentaire</a></span>";?>
+                    </button>
+                </div> 
+                <?php if ($value['validate'] == 0 && $_SESSION['role'] == 1) { ?>
+                    <div class="container-cv">
+                        <button name="submit" class="button">            
+                            <?php echo "<span><a href='index.php?page=posts&action=validateComment&amp;id=".$value['id']."'>Valider ce commentaire</a></span>";?>
+                        </button>
+                    </div> 
+                    <?php };
+                 };
+            };
         };
     }else{
         echo "Vous n'avez aucun commentaire";

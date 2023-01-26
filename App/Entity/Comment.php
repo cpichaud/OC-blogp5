@@ -11,6 +11,7 @@ class Comment
     private $title;
     private $created_at;
     private $updated_at;
+    private $validate;
 
 
     function __construct()
@@ -39,7 +40,14 @@ class Comment
     {
         $this->content = $content;
     }
-
+    public function getValidate():string
+    {
+        return $this->content;
+    }
+    public function setValidate($content)
+    {
+        $this->content = $content;
+    }
     public function getCreated_at():string
     {
         return $this->created_at;

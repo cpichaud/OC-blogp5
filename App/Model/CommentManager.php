@@ -16,6 +16,7 @@ class CommentManager extends connectionDb
      * @param $updated_at
      * @param int $user_id
      * @param int $post_id
+     * @param int $validate
      * @return int
      */
     public function createComment(string $title, string $content, $created_at, $updated_at, int $user_id, int $post_id)
@@ -29,7 +30,7 @@ class CommentManager extends connectionDb
             ':created_at'     => $created_at,
             ':updated_at'     => $updated_at,
             ':user_id'  => $user_id,
-            ':post_id' => $post_id
+            ':post_id' => $post_id,
         ]);
 
         $new = $this->db->lastInsertId();
@@ -69,5 +70,17 @@ class CommentManager extends connectionDb
         $delete = $this->db->prepare($sql);
         $delete->execute([$id]);
     }
-    
+
+     /**
+     * @param int $id
+     * @return int
+     */
+    public function validateComment(int $id)
+    {
+        $sql = "UPDATE comment SET validate = 1 WHERE id= :id";
+
+        $r = $this->db->prepare($sql);  
+        $r->bindValue(':id', $id, PDO::PARAM_INT);
+        $r->execute();
+    }
 }
