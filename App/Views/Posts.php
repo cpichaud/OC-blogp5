@@ -17,7 +17,7 @@ require("header.php")?>
                 <p>Post :".$value['id'].":</p>
                 <h2>".$value['title']."</h2>
                 <p>".$value['chapo']."</p>
-                <p>".$value['content']."</p>
+                <p class='text'>".$value['content']."</p>
                 <p>Date création du post: ".$value['created_at']."</p>
                 <p>Dernière mis à jours: ".$value['update_at']."</p>
                 <div class='container-cv'>
