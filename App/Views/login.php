@@ -5,7 +5,7 @@ use App\Model\UserManager;
 
 
 
-require("Auth.php");
+require_once("Auth.php");
         
 ?>
 <?php require "header.php";?>

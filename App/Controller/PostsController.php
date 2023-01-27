@@ -27,7 +27,6 @@ class PostsController extends Controller{
         $posts = $this->postManager->findAll();
 
         $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'posts' => $posts,
         ];  
@@ -40,7 +39,6 @@ class PostsController extends Controller{
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'post' => $post,
             'comment' => $comment
@@ -91,74 +89,63 @@ class PostsController extends Controller{
             echo "Une erreur est survenue";
         }
   
-        $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
+        $arrayToTemplate = [ 
             'Accueil' => [],
         ];
         $this->render($arrayToTemplate, "createPost");
     }
 
     public function editPost(){     
-        try {
-            $this->placeholder();
-            $postManager = new PostManager();  
-            $post = $postManager->findById($_GET['id']);
-            if (isset($_POST['createPost'])) {      
-                if (
-                    !empty($_POST['title']) 
-                    && !empty($_POST['content'])) 
-                {
-                    $postManager = new PostManager(); 
-
-                    session_start();
-                    $title = htmlspecialchars($_POST['title']);
-                    $content = htmlspecialchars($_POST['content']);
-                    $updateCreate =new DateTime();        
-                    $user_id = intval($_SESSION['id']);
-                    $id = intval($post['id']);
-                    $chapo = htmlspecialchars($_POST['chapo']);
-                  
-                    $post = $postManager->editPost(
-                        $id,
-                        $title, 
-                        $content,  
-                        $updateCreate->format('Y-m-d H:i:s'), 
-                        $user_id,
-                        $chapo
-                    ); 
-                    
-                    header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      
-                }else {
-                    $error_message = 'Veuillez remplir tous les champs';
-                    $class = "error";
-                    $arrayToTemplate = [
-                        'error_message' => $error_message,
-                        'class' => $class
-                    ];
-                    $this->render($arrayToTemplate, 'editPost'); 
-                }
-            }      
-        } catch (\Exception $e) {
-            echo "Une erreur est survenue";
-        }
-  
+        $error_message= "";
+        $class = "";
+        $postManager = new PostManager();  
+        $post = $postManager->findById($_GET['id']);
+        if (isset($_POST['editPost'])) {      
+            if (
+                !empty($_POST['title']) 
+                && !empty($_POST['content'])) 
+            {
+                session_start();
+                $postManager = new PostManager(); 
+                $title = htmlspecialchars($_POST['title']);
+                $content = htmlspecialchars($_POST['content']);
+                $updateCreate =new DateTime();        
+                $user_id = intval($_SESSION['id']);
+                $id = intval($post['id']);
+                $chapo = htmlspecialchars($_POST['chapo']);
+                
+                $post = $postManager->editPost(
+                    $id,
+                    $title, 
+                    $content,  
+                    $updateCreate->format('Y-m-d H:i:s'), 
+                    $user_id,
+                    $chapo
+                );  
+                header('Location:/blog-oc-p5/OC-blogp5/public/index.php?page=posts&action=editPost&id='.$_GET['id']);      
+            }else {
+                $error_message = 'Veuillez remplir tous les champs';
+                $class = "error";
+            };
+        } ;
         $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
-            'Accueil' => [],
+            'error_message' => $error_message,
+            'class' => $class,
+            'post' => $post
         ];
-        $this->render($arrayToTemplate, "editPost");
+        $this->render($arrayToTemplate, 'editPost');  
     }
 
     public function deletePost(){
         $postManager = new PostManager();  
         $post = $postManager->delete($_GET['id']);
-        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+        $this->show();
     }
 
     public function deleteComment(){
         $commentManager = new CommentManager();
         $comment = $commentManager->delete($_GET['id']);
-        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+        $this->show();
     }
 
     public function validateComment(){
@@ -168,7 +155,7 @@ class PostsController extends Controller{
             $validate = intval(1);
             $commentManager->validateComment(
                 $id);   
-            header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+            $this->show();
                 
         } catch (\Exception $e) {
             echo "Une erreur est survenue";

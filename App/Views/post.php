@@ -1,7 +1,6 @@
 <!--HEADER-->
 <?php 
-require("Auth.php");
-userLogin();
+require_once("Auth.php");
 require("header.php")?>
 
 <main class="container">

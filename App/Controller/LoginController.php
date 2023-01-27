@@ -21,7 +21,6 @@ class LoginController extends Controller{
     public function show(){
        
         $arrayToTemplate = [
-            'title'   => 'Camille PICHAUD', 
             'Accueil' => [],
         ];  
         $this->render($arrayToTemplate, __CLASS__); 
@@ -30,7 +29,6 @@ class LoginController extends Controller{
     public function logout(){
        
         $arrayToTemplate = [
-            'title'   => 'Camille PICHAUD', 
             'Accueil' => [],
         ];  
         $this->render($arrayToTemplate, 'logout'); 
