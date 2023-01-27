@@ -27,7 +27,6 @@ class PostsController extends Controller{
         $posts = $this->postManager->findAll();
 
         $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'posts' => $posts,
         ];  
@@ -40,7 +39,6 @@ class PostsController extends Controller{
         $postManager = new PostManager();  
         $post = $postManager->findById($_GET['id']);
         $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
             'Accueil' => [],
             'post' => $post,
             'comment' => $comment
@@ -91,8 +89,7 @@ class PostsController extends Controller{
             echo "Une erreur est survenue";
         }
   
-        $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
+        $arrayToTemplate = [ 
             'Accueil' => [],
         ];
         $this->render($arrayToTemplate, "createPost");
@@ -103,7 +100,7 @@ class PostsController extends Controller{
             $this->placeholder();
             $postManager = new PostManager();  
             $post = $postManager->findById($_GET['id']);
-            if (isset($_POST['createPost'])) {      
+            if (isset($_POST['editPost'])) {      
                 if (
                     !empty($_POST['title']) 
                     && !empty($_POST['content'])) 
@@ -125,9 +122,8 @@ class PostsController extends Controller{
                         $updateCreate->format('Y-m-d H:i:s'), 
                         $user_id,
                         $chapo
-                    ); 
-                    
-                    header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts');                      
+                    );  
+                    $this->show();            
                 }else {
                     $error_message = 'Veuillez remplir tous les champs';
                     $class = "error";
@@ -141,24 +137,19 @@ class PostsController extends Controller{
         } catch (\Exception $e) {
             echo "Une erreur est survenue";
         }
-  
-        $arrayToTemplate = [
-            'title' => 'Camille PICHAUD', 
-            'Accueil' => [],
-        ];
-        $this->render($arrayToTemplate, "editPost");
+        $this->show();   
     }
 
     public function deletePost(){
         $postManager = new PostManager();  
         $post = $postManager->delete($_GET['id']);
-        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+        $this->show();
     }
 
     public function deleteComment(){
         $commentManager = new CommentManager();
         $comment = $commentManager->delete($_GET['id']);
-        header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+        $this->show();
     }
 
     public function validateComment(){
@@ -168,7 +159,7 @@ class PostsController extends Controller{
             $validate = intval(1);
             $commentManager->validateComment(
                 $id);   
-            header('Location: /blog-oc-p5/OC-blogp5/public/index.php?page=posts'); 
+            $this->show();
                 
         } catch (\Exception $e) {
             echo "Une erreur est survenue";

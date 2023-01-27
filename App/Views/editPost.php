@@ -1,7 +1,6 @@
 <!--HEADER-->
 <?php 
 require("Auth.php");
-userLogin();
 require("header.php")?>
 
 <main class="container mt-5">
@@ -34,8 +33,8 @@ require("header.php")?>
                     <label class="form-label" for="content">Contenue</label> 
                 </div>
 
-                <!-- Submit button -->
-                <button type="submit" name="createPost" class="btn btn-primary btn-block mb-4">Valider modification</button>
+                <!-- Submit button --><?php echo ('<a href="index.php?page=Posts&action=show"></a>'); ?>
+                <button type="submit" name="editPost" class="btn btn-primary btn-block mb-4">Valider modification</button>
             </form>
         </div>
     </section>

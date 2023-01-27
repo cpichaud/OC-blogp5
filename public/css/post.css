@@ -33,5 +33,7 @@
 }
 
 .text{
-    clip-path: inset(0 0 60% 0);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
