@@ -96,48 +96,44 @@ class PostsController extends Controller{
     }
 
     public function editPost(){     
-        try {
-            $this->placeholder();
-            $postManager = new PostManager();  
-            $post = $postManager->findById($_GET['id']);
-            if (isset($_POST['editPost'])) {      
-                if (
-                    !empty($_POST['title']) 
-                    && !empty($_POST['content'])) 
-                {
-                    $postManager = new PostManager(); 
-
-                    session_start();
-                    $title = htmlspecialchars($_POST['title']);
-                    $content = htmlspecialchars($_POST['content']);
-                    $updateCreate =new DateTime();        
-                    $user_id = intval($_SESSION['id']);
-                    $id = intval($post['id']);
-                    $chapo = htmlspecialchars($_POST['chapo']);
-                  
-                    $post = $postManager->editPost(
-                        $id,
-                        $title, 
-                        $content,  
-                        $updateCreate->format('Y-m-d H:i:s'), 
-                        $user_id,
-                        $chapo
-                    );  
-                    $this->show();            
-                }else {
-                    $error_message = 'Veuillez remplir tous les champs';
-                    $class = "error";
-                    $arrayToTemplate = [
-                        'error_message' => $error_message,
-                        'class' => $class
-                    ];
-                    $this->render($arrayToTemplate, 'editPost'); 
-                }
-            }      
-        } catch (\Exception $e) {
-            echo "Une erreur est survenue";
-        }
-        $this->show();   
+        $error_message= "";
+        $class = "";
+        $postManager = new PostManager();  
+        $post = $postManager->findById($_GET['id']);
+        if (isset($_POST['editPost'])) {      
+            if (
+                !empty($_POST['title']) 
+                && !empty($_POST['content'])) 
+            {
+                session_start();
+                $postManager = new PostManager(); 
+                $title = htmlspecialchars($_POST['title']);
+                $content = htmlspecialchars($_POST['content']);
+                $updateCreate =new DateTime();        
+                $user_id = intval($_SESSION['id']);
+                $id = intval($post['id']);
+                $chapo = htmlspecialchars($_POST['chapo']);
+                
+                $post = $postManager->editPost(
+                    $id,
+                    $title, 
+                    $content,  
+                    $updateCreate->format('Y-m-d H:i:s'), 
+                    $user_id,
+                    $chapo
+                );  
+                header('Location:/blog-oc-p5/OC-blogp5/public/index.php?page=posts&action=editPost&id='.$_GET['id']);      
+            }else {
+                $error_message = 'Veuillez remplir tous les champs';
+                $class = "error";
+            };
+        } ;
+        $arrayToTemplate = [
+            'error_message' => $error_message,
+            'class' => $class,
+            'post' => $post
+        ];
+        $this->render($arrayToTemplate, 'editPost');  
     }
 
     public function deletePost(){

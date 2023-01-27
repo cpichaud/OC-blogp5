@@ -1,6 +1,6 @@
 <!--HEADER-->
 <?php 
-require("Auth.php");
+require_once("Auth.php");
 require("header.php")
 ?>
 <?php
